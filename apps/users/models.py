@@ -22,3 +22,28 @@ class UserProfile(AbstractUser):
 
     def __unicode__(self):
         return self.username
+
+
+class EmailVerifyRecord(models.Model):
+    SEND_TYPE = (('register', u'注册'), ('forget', u'找回密码'))
+    code = models.CharField(max_length=20, verbose_name=u"verify_code")
+    email = models.EmailField(max_length=50, verbose_name=u"email")
+    send_type = models.CharField(choices=SEND_TYPE, max_length=10)
+    send_time = models.DateTimeField(default=datetime.now)
+    add_time = models.DateTimeField(default=datetime.now, verbose_name=u"add_time")
+
+    class Meta:
+        verbose_name = u"email_verify_code"
+        verbose_name_plural = verbose_name
+
+
+class Banner(models.Model):
+    title = models.CharField(max_length=100, verbose_name=u"title")
+    image = models.ImageField(upload_to="banner/%Y/%m", verbose_name=u"banner", max_length=100)
+    url = models.URLField(max_length=200, verbose_name=u"access_address")
+    index = models.IntegerField(default=100, verbose_name=u"order")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name=u"add_time")
+
+    class Meta:
+        verbose_name = u"banner"
+        verbose_name_plural = verbose_name
