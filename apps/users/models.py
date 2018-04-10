@@ -29,7 +29,7 @@ class EmailVerifyRecord(models.Model):
     add_time = models.DateTimeField(default=datetime.now, verbose_name="add_time")
 
     class Meta:
-        verbose_name = "email_verify_code"
+        verbose_name = "emailVerifyCode"
         verbose_name_plural = verbose_name
 
 
