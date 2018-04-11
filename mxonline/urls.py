@@ -17,5 +17,5 @@ from django.urls import path
 import xadmin
 
 urlpatterns = [
-    path('admin/', xadmin.site.urls),
+    path('xadmin/', xadmin.site.urls),
 ]

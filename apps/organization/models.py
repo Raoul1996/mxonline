@@ -25,7 +25,7 @@ class CourseOrg(models.Model):
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"add_time")
 
     class Meta:
-        verbose_name = "course_org"
+        verbose_name = "courseOrg"
         verbose_name_plural = verbose_name
 
 

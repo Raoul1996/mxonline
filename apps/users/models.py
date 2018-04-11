@@ -22,15 +22,18 @@ class UserProfile(AbstractUser):
 
 class EmailVerifyRecord(models.Model):
     SEND_TYPE = (('register', 'register'), ('forget', 'found password'))
-    code = models.CharField(max_length=20, verbose_name="verify_code")
+    code = models.CharField(max_length=20, verbose_name="verify code")
     email = models.EmailField(max_length=50, verbose_name="email")
     send_type = models.CharField(choices=SEND_TYPE, max_length=10)
     send_time = models.DateTimeField(default=datetime.now)
-    add_time = models.DateTimeField(default=datetime.now, verbose_name="add_time")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="add time")
 
     class Meta:
         verbose_name = "emailVerifyCode"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return '{0}({1})'.format(self.code, self.email)
 
 
 class Banner(models.Model):

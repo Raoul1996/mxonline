@@ -20,8 +20,11 @@ class Course(models.Model):
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"add_time")
 
     class Meta:
-        verbose_name = u"course"
+        verbose_name = "course"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class Lesson(models.Model):
